@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Надя я тебя люблю</title>
+    <link rel="icon" href="Pixelated-Heart-PNG-Image.png">
+<style>
+    :root { --scroll-duration: 120s; } /* change this to speed up/slow down */
+    body { margin: 0; }
+
+    /* Background lyrics container */
+    .lyrics-bg {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;               /* keep behind page content */
+      pointer-events: none;
+    }
+
+    /* The moving track of lyrics */
+    .lyrics-track {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%);
+      width: 100%;
+      max-width: 1100px;
+      padding: 2rem 1rem;
+      color: #ffffff;
+      opacity: 0.7;             /* subtle background text */
+      text-align: center;
+      font-size: 52px;
+      line-height: 1.8;
+      white-space: pre-wrap;     /* preserve newlines */
+      animation: scrollLyrics var(--scroll-duration) linear infinite;
+    }
+
+    @keyframes scrollLyrics {
+      0%   { transform: translateX(-50%) translateY(-100%); }
+      100% { transform: translateX(-50%) translateY(120%); }
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .lyrics-track { animation: none; transform: translateX(-50%) translateY(0); opacity: 7; }
+    }
+    </style>
+</head>
+<body>
+    <div class="lyrics-bg" aria-hidden="true">
+        <div class="lyrics-track">
+These are the eyes and the lies of the taken
+These are their hearts but their hearts don't beat like ours
+They burn 'cause they are all afraid
+For every one of us, there's an army of them
+But you'll never fight alone
+'Cause I wanted you to know
+That the world is ugly
+But you're beautiful to me
+Well are you thinking of me now (now)
+These are the nights and the lights that we fade in
+These are the words but the words aren't coming out
+They burn 'cause they are hard to say
+For every failing sun, there's a morning after
+Though I'm empty when you go
+I just wanted you to know
+That the world is ugly
+But you're beautiful to me
+Are you thinking of me
+Like I'm thinking of you
+I would say I'm sorry, though
+Though I really need to go
+I just wanted you to know
+I wanted you to know
+I wanted you to know
+I'm thinking of you every night, every day
+These are the eyes and the lies of the taken
+These are their hearts but their hearts don't beat like ours
+They burn 'cause they are all afraid
+When mine beats twice as hard
+'Cause the world is ugly
+But you're beautiful to me
+Are you thinking of me
+Like I'm thinking of you
+I would say I'm sorry, though
+Though I really need to go
+I just wanted you to know
+That the world is ugly (I just wanted you to know)
+But you're beautiful to me (I just wanted you to know)
+Are you thinking of me
+Stop your crying, helpless feeling
+Dry your eyes and start believing
+There's one thing they'll never take from you
+        </div>
+    </div>
+    <div class="main">
+        <img class="tape1" src="tape-removebg-preview.png" alt="">
+        <img class="tape2" src="tape-removebg-preview.png" alt="">
+        <img class="bats" src="bats-removebg-preview.png" alt="">
+        <div class="letteropened">
+        <div class="textbox">
+        <p>
+            Впервые пишу такие длинные любовные письма но сегодня(почти) 
+            особенный день  поэтому я постараюсь излить всю свою любовь к 
+            тебе в этом тексте, может месяц отношений это пока не так много но 
+            это первый месяц, а значит самый главный такшо да, мне ещё никогда в 
+            жизни не приходилось находить такого прекрасного человека как ты, слов 
+            во всех языках мира которые придумали и будут придумывать не хватит чтобы 
+            описать насколько ты прекрасная девушка, ты всегда любящая заботливая и твоя 
+            поддержка всегда заставляет меня чувствовать себя спокойнее, я обожаю твою улыбку 
+            хоть и шутил про это, я безумно люблю твои карие глаза, я безумно люблю твои шутки, 
+            я безумно люблю твои губы и я безумно люблю тебя, ты действительно впервые дала 
+            почувствовать какого-то это любить и быть любимым по настоящему, я надеюсь это наш 
+            первый и не последний месяца вместе ведь я действительно очень хочу связать свою 
+            судьбу с тобой и быть вместе с тобой пока я не умру и даже умереть я хочу рядом с 
+            тобой ведь я никогда не полюблю никого так сильно как люблю тебя, я действительно 
+            не очень умею писать такие длинные тексты но я очень старался, может не очень хорошо 
+            сформулировано но каждое слово тут максимально искреннее, рядом с тобой я 
+            действительно чувствую себя собой и я действительно чувствую себя живым, 
+            люблю тебя надя, твой свет делает мою жизнь намного счастливее.
+        </p>
+        </div>
+        </div>
+                <img id="vinyldisk" class="vinyl" src="pngimg.com - vinyl_PNG102.png" alt="">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

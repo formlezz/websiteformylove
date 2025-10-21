@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(bg.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: fixed;
+    backdrop-filter: blur(3px) brightness(35%);
+    height: 812px;
+    font-family: "Birthstone", cursive;
+    right: 0px;
+  left: 0px;
+}
+.main{
+    width: 100%;
+    height: 812px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.letteropened{
+    width: 80%;
+    z-index: 5;
+    text-align: center;
+    color: white;
+    height: 70%;
+    background: url(lettetopened.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 10px black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+img{
+    width: 40%;
+}
+.textbox{
+    margin-top: 30px;
+    width: 85%;
+    font-family: "Great Vibes", cursive;
+    font-size: 14px;
+    color: black;
+    border-radius: 10px;
+}
+.vinyl{
+    position: fixed;
+    width: 25%;
+    z-index: 6;
+    bottom: 20px;
+}
+.lyrics-line{
+    font-family: "Birthstone", cursive;
+}
+@keyframes glowrotate {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+.tape1{
+    position: absolute;
+    width: 20%;
+    top: 115px;
+    left: 15px;
+    z-index: 7;
+    rotate: -25deg;
+}
+.tape2{
+    position: absolute;
+    width: 20%;
+    bottom: 115px;
+    right: 20px;
+    z-index: 7;
+    rotate: -25deg;
+}
+.bats{
+    position: absolute;
+    width: 12%;
+    bottom: 132px;
+    left: 157px;
+    z-index: 7;
+}
