@@ -1,4 +1,3 @@
-// ...existing code...
 const audio = new Audio('My Chemical Romance - The World Is Ugly.mp3');
 audio.loop = false;
 audio.preload = 'auto';
@@ -6,13 +5,13 @@ audio.volume = 0.1;
 
 const vinyldiskrotate = document.getElementById('vinyldisk');
 
-const SONG_DURATION = 294; // fallback total length (seconds)
-const START_OFFSET = 46;   // fallback start (seconds)
+const SONG_DURATION = 294; 
+const START_OFFSET = 46;   
 
 let lyricsTrack = null;
 let viewport = null;
 let rafId = null;
-let cues = []; // { start: seconds, text: string }
+let cues = []; 
 
 let currentY = 0;
 let initialY = 0;
@@ -105,33 +104,33 @@ function updatePosition() {
       lines[i].style.transform = i === active ? 'scale(1.02)' : 'scale(1)';
     }
 
-    // top offset where the active line should appear (e.g. 6% from top)
+    
     const topOffset = Math.max(8, Math.round(viewport.clientHeight * 0.08));
 
     let targetYpx;
     if (active >= 0 && lines[active]) {
       const lineRect = lines[active].getBoundingClientRect();
       const trackRect = lyricsTrack.getBoundingClientRect();
-      // distance from top of track to top of active line
+     
       const lineTopFromTrack = (lineRect.top - trackRect.top);
-      // desired scroll so that active line's top is at topOffset
+   
       const desiredScroll = lineTopFromTrack - topOffset;
-      // transform uses negative desiredScroll to move track up
+
       targetYpx = -desiredScroll;
     } else {
-      // still before first cue: keep whole lyrics hidden above viewport
+
       targetYpx = initialY;
     }
 
-    // smooth movement: lerp currentY -> targetY
-    const speed = 0.06; // smaller = slower movement
+
+    const speed = 0.06; 
     currentY += (targetYpx - currentY) * speed;
 
     lyricsTrack.style.transform = `translateX(-50%) translateY(${currentY}px)`;
     return;
   }
 
-  // fallback continuous scroll if no cues
+  
   const tOffset = Math.max(0, t - START_OFFSET);
   const total = Math.max(1, SONG_DURATION - START_OFFSET);
   const progress = Math.min(1, Math.max(0, tOffset / total));
@@ -154,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   lyricsTrack = document.querySelector('.lyrics-track');
   if (!lyricsTrack) return;
 
-  // setup viewport wrapper
+ 
   viewport = document.createElement('div');
   viewport.className = 'lyrics-viewport';
   Object.assign(viewport.style, {
@@ -162,7 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     inset: '0',
     overflow: 'hidden',
     display: 'flex',
-    alignItems: 'flex-start', // align start so top offset is meaningful
+    alignItems: 'flex-start', 
     justifyContent: 'center',
     pointerEvents: 'none'
   });
@@ -170,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   parent.replaceChild(viewport, lyricsTrack);
   viewport.appendChild(lyricsTrack);
 
-  // disable CSS animation and ensure absolute positioning
+
   lyricsTrack.style.animation = 'none';
   lyricsTrack.style.left = '50%';
   lyricsTrack.style.top = '0';
@@ -183,7 +182,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   lyricsTrack.style.color = '#fff';
   lyricsTrack.style.pointerEvents = 'none';
 
-  // try load SRT cues
   const external = await tryLoadSRT();
   if (external && external.length) {
     cues = external;
@@ -195,11 +193,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     buildDOMFromCues(cues);
   }
 
-  // compute initialY after DOM layout so lyrics are hidden above viewport
+
   await new Promise(requestAnimationFrame);
   const trackHeight = lyricsTrack.getBoundingClientRect().height;
   const vpHeight = viewport.clientHeight || window.innerHeight;
-  // place lyrics fully above visible area
+ 
   initialY = -(trackHeight + vpHeight * 0.2);
   currentY = initialY;
   lyricsTrack.style.transform = `translateX(-50%) translateY(${currentY}px)`;
@@ -219,6 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   audio.play().then(() => {
+    vinyldiskrotate.style.animation = 'glowrotate 3s linear infinite';
     if (!rafId) rafLoop();
   }).catch(() => {
     showPlayButton();
@@ -226,7 +225,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   audio.addEventListener('play', () => { if (!rafId) rafLoop(); });
   audio.addEventListener('pause', () => { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } });
-  audio.addEventListener('seeked', () => { /* immediate reposition on seek */ currentY = currentY; updatePosition(); });
+  audio.addEventListener('seeked', () => { currentY = currentY; updatePosition(); });
   audio.addEventListener('timeupdate', updatePosition);
 });
-// ...existing code...
